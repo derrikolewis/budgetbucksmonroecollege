@@ -1,14 +1,23 @@
-<!Doctype html>
-  <head>
-    <title>
-       Budget$Bucks
-    </title>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  </head>
-  <body style="background: linear-gradient(25deg,#8600b3 50%,#cc33ff 50%); height: 100vh">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <p style="color: white; text-align: center; font-family: Arial; font-size: 25px">Welcome to our WebPage! Let's all work together please!</p>
-    <p style="color: white; text-align: center; font-family: Arial; font-size: 25px">Work hard and do all your parts!</p>
-    <p style="color: white; text-align: center; font-family: Arial; font-size: 25px">Thank you in advance!</p>
-  </body>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetBucks</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+</head>
+<body>
+    {% block content %}
+    <h1> HomePage for Project</h1>
+    <p>
+        Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a><br>
+        Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+    </p>
+    {% endblock %}
+</body>
 </html>
