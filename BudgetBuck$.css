@@ -1,0 +1,50 @@
+		<style>
+		
+		/* Start of Home Page CSS */
+			body {
+					background-color: white;
+			}
+			.divLinks {
+						color: white;
+						text-decoration: none;
+						font-family: Times New Roman;
+						font-size: 14pt;
+			}
+			.divLinks:hover {
+								text-decoration: underline;
+								color: ;
+			}
+			.welcome {
+						font-family: Times New Roman;
+						font-size: 65pt;
+			}
+			.menuParentDiv1 {
+							text-align: center;
+							height: 200px;
+			}
+			.menuChildDiv1 {
+							background-color: black;
+							width: 25%;
+							float: left;
+							text-align: left;
+			}
+			.menuChildDiv2 {
+							background-color: black;
+							width: 75%;
+							float: left;
+			}
+			.bodyParentDiv1 {
+								margin: 30px;
+			}
+			.bodyChildDiv1 {
+							width: 50%;
+							float: left;
+							text-align: center;
+			}
+			.basicInfo {
+						font-family: Times New Roman;
+						font-size: 16pt;
+			}
+			/* End of Home Page CSS */
+			
+		</style>
