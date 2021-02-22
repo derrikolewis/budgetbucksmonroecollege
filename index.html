@@ -10,10 +10,49 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+    <link rel="stylesheet" type="text/css" href="BudgetBuck$.css">
 </head>
 <body>
-    {% block content %}
-    <h1> HomePage for Project</h1>
+   <!-- Start of Menu Bar -->
+		<div class="menuParentDiv1">
+			<div class="menuChildDiv1">
+			<br>&nbsp;&nbsp;&nbsp;
+				<img src="Images/BudgetBuck$Logo.jpg" alt="BudgetBuck$" height="144px" width="100px">
+				<br>&nbsp;
+			</div>
+			<div class="menuChildDiv2">
+			<br><br><br><br><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="divLinks" href="">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="divLinks" href="">Book Online</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="divLinks" href="">Plans & Pricing</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="divLinks" href="">Services</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="divLinks" href="">About</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="divLinks" href="">Clients</a>
+				<br><br><br><br><br>
+			</div>
+		</div>
+		<!-- End of Menu Bar -->
+    
+        <!-- Start of Welcome Greeting and Logo -->
+		<div class="bodyParentDiv1">
+			<div class="bodyChildDiv1">
+				<br><br><br><br><br>
+				<p class="welcome">Welcome to Budget Buck$</p>
+				<p class="basicInfo">Your Satisfaction is Our Priority</p>
+				<br>
+				<p class="basicInfo">Founded in January 2020 by a group of members who all have the same goal in common.
+				To help you budget your money.</p>
+				<br>
+				<p class="basicInfo">Founders: Alexavia Smith, Abraham Moncion, Derriko Lewis, Dior Llewellyn, 
+				Donte Rolle, Jonathan Jacques, Reachel, Zaeem Rizwan</p>
+			</div>
+			<div class="bodyChildDiv1">
+				<img src="Images/BudgetBuck$Logo.jpg" alt="BudgetBuck$" height="900px" width="650px">
+			</div>
+		</div>
+		<!-- End of Welcome Greeting and Logo -->
+    
     <p>
         Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a><br>
         Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
