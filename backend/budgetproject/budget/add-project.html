@@ -1,0 +1,187 @@
+{% extends 'budget/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  margin-top: 0 !important;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0 !important;
+  background: #101820ff no-repeat;
+}
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 260px;
+  height: 100%;
+  background: #fee715ff;
+  transition: all .5s ease;
+  border-radius: 30px;
+}
+.sidebar header {
+  font-size: 25px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: black;
+  user-select: none;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: black;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgba(255,255,255,.1);
+  transition: .4s;
+}
+ul li:hover a{
+  padding-left: 50px;
+  background: white;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+#check{
+  display: none;
+}
+label #btn,label #cancel{
+  position: absolute;
+  background: black;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+label #btn{
+  left: 40px;
+  top: 25px;
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
+  transition: all .5s;
+  color: black;
+  background: #fee715ff;
+}
+label #cancel{
+  z-index: 1111;
+  left: -195px;
+  top: 17px;
+  font-size: 30px;
+  background: black;
+  padding: 4px 9px;
+  transition: all .5s ease;
+  color: white;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+section{
+  background: #101820ff no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  transition: all .5s;
+}
+
+form {
+  background-color: #fee715ff;
+  border-radius: 20px;
+  border-style: solid;
+  border: 3px solid white;
+}
+
+.btn {
+  margin: 0;
+  margin-bottom: 10px;
+  position: relative;
+  left: 45%;
+  border-radius: 30px;
+  background: black;
+}
+
+.btn:hover {
+  margin: 0;
+  margin-bottom: 10px;
+  position: relative;
+  left: 45%;
+  border-radius: 30px;
+  background: white;
+  color: black;
+}
+</style>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+  <input type="checkbox" id="check">
+  <label for="check">
+    <i class="fa fa-bars" aria-hidden="true" id="btn"></i>
+    <i class="fa fa-window-close" aria-hidden="true" id="cancel"></i>
+  </label>
+  <div class="sidebar">
+  <header style="font-family: Ink Free;"><b>BudgetBucks</header>
+<ul>
+<li><a href="{% url 'home' %}"><i class="fa fa-home"></i>Homepage</a></li>
+<li><a href="{% url 'list'%}"><i class="fa fa-eye" aria-hidden="true"></i>View Projects</a></li>
+<li><a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i>Create New Project</a></li>
+<li><a href="#"><i class="fa fa-key" aria-hidden="true"></i>Password</a></li>
+<li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</b></a></li>
+</ul>
+</div>
+
+<section>
+  <div class="container">
+    <h1 style="text-align: center; font-family: Ink Free; color: white; font-size: 80px;">Create New Project</h1>
+    <hr>
+    <br>
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.field.as_hidden }}
+      <label for="id_name" style="font-size: 25px; color: black; font-family: Ink Free; margin-left: 2px;"><b>Name:</label>
+      <input type="text" name="name" maxlength="100" required="" id="id_name" style="margin-left: 1px;">
+      <label for="id_budget" style="font-size: 25px; color: black; font-family: Ink Free; margin-left: 2px;">Budget:</label>
+      <input type="number" name="budget" required="" id="id_budget" style="margin-left: 1px;">
+      <label for="categoryInput" style="font-size: 25px; color: black; font-family: Ink Free; margin-left: 2px;">Expense Categores eg. Groceries, Bills, Miscellaneous <br><small>(hit enter after every category) and press X to remove</small></b></label>
+      <input type="text" name="categoryInput" id="categoryInput" style="margin-left: 1px;">
+      <input type="hidden" name="categoriesString">
+  
+      <ul id="categoriesContainer" style="font-weight: bold; font-size: 30px; font-family: Ink Free; margin-left: 2px;">
+  
+      </ul>
+  
+      <button type="submit" class="btn">Start Project</button>
+  
+    </form>
+  </div>
+</section>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+{% endblock %}
